@@ -9,12 +9,17 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class GUI {
+    private JFrame gui;
+    private JPanel panel;
+    private BufferedImage myPicture;
+    private JLabel picLabel;
+
     public GUI() throws IOException {
         initialize();
     }
 
     public void initialize() throws IOException {
-        JFrame gui = new JFrame("Arcade");
+        gui = new JFrame("Arcade");
         gui.setSize(420, 500);
         gui.setResizable(false);
         gui.setLocationRelativeTo(null);
@@ -22,14 +27,14 @@ public class GUI {
         gui.setLayout(null);
         gui.getContentPane().setBackground(new Color(53, 18, 105));
 
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         panel.setSize(420, 500);
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBackground(new Color(53, 18, 105));
         gui.add(panel);
 
-        BufferedImage myPicture = ImageIO.read(new File("JavaAPIProject/src/main/java/com/example/img.png"));
-        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+        myPicture = ImageIO.read(new File("JavaAPIProject/src/main/java/com/example/img.png"));
+        picLabel = new JLabel(new ImageIcon(myPicture));
         picLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         picLabel.setAlignmentY(Component.TOP_ALIGNMENT);
         panel.add(picLabel);
@@ -41,11 +46,13 @@ public class GUI {
         but1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Wakamo game = new Wakamo();
+                SelectionGui select = new SelectionGui();
 
             }
         });
         
         gui.setVisible(true);
     }
+
+
 }

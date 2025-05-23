@@ -35,7 +35,11 @@ public class Wakamo extends Game{
         game.setLayout(new BorderLayout());
         game.setResizable(false);
         game.setLocationRelativeTo(null);
-        game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+<<<<<<< HEAD
+    
+=======
+        game.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+>>>>>>> 5ff819970bcce5ce468cad1ac05203bb88e062c2
 
 
         textLabel.setFont(new Font("Arial", Font.PLAIN, 50));
