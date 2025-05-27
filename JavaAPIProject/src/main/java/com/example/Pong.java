@@ -1,16 +1,17 @@
 package com.example;
 
 import java.awt.*;
-import java.util.Random;
+import java.awt.event.*;
+import java.util.*;
 import javax.swing.*;
 
-public class Pong extends Game{
+public class Pong extends Game {
     private JFrame game;
-    private JPanel panel;
+    private PongPanel panel;
 
 
 
-    private int ballDiameter, paddleWidth, paddleHeight;
+    private int ballDiameter;
     private Thread gameThread;
     private Image image;
     private Graphics graphic;
@@ -24,12 +25,18 @@ public class Pong extends Game{
 
     public void initialize() {
         game = new JFrame("Pong");
-        panel = new JPanel();
-
-        game.setSize(600, 750);
-        game.setLayout(null);
+        panel = new PongPanel();
+        
+        game.add(panel);
+        game.setSize(1000, 555);
         game.setResizable(false);
+        game.setBackground(Color.black);
         game.setLocationRelativeTo(null);
+        game.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        game.pack();
+    
+
+        game.setVisible(true);
         
         
 
