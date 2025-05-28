@@ -16,6 +16,10 @@ public class Paddle extends Rectangle{
         speed = 10;
     }
 
+    public int getID() {
+        return id;
+    }
+
     public void keyPressed(KeyEvent e) {
         switch(id) {
             case 1: 
@@ -74,7 +78,6 @@ public class Paddle extends Rectangle{
 
     public void move() {
         y+=yVelo;
-        System.out.println(y);
     }
 
     public void draw(Graphics g) {

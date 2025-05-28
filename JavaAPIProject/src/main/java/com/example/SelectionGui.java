@@ -12,7 +12,7 @@ public class SelectionGui {
     private JFrame selectionGui;
     private JPanel boardPanel;
     private JButton[] gameIcons;
-    private ImageIcon wakamo, pong, gaem3;
+    private ImageIcon wakamo, pong, game3;
 
 
     public SelectionGui() {
@@ -50,7 +50,6 @@ public class SelectionGui {
             }
             else if (i == 1) {
                 icon.setIcon(pong);
-                icon.setIcon(Pong);
             }
             else if (i == 2) {
                 icon.setIcon(game3);
@@ -63,7 +62,7 @@ public class SelectionGui {
                         Wakamo waka = new Wakamo();
                     }
                     else if (icon.getIcon() == pong) {
-                        Wakamo waka = new Wakamo();
+                        Pong pongGame = new Pong();
                     }
                     else if (icon.getIcon() == game3) {
                         Wakamo waka = new Wakamo();

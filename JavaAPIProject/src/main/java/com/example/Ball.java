@@ -1,31 +1,43 @@
 package com.example;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.util.*;
-import javax.swing.*;
+import java.util.Random;
 
 public class Ball extends Rectangle{
-    private Random rand;
-    private int xSpeed, ySpeed;
+    int xSpeed, ySpeed;
+    int speedScale = 2;
 
-    public Ball() {
+    public Ball(int x, int y, int width, int height) {
+        super(x, y, width, height);
+        int randX = (int) (Math.random() * 2) + 1;
+        if (randX == 0) {
+            randX--;
+        }
+        setXDirection(randX * speedScale);
 
+        int randY = (int) (Math.random() * 2) + 1;
+        if (randY == 0) {
+            randY--;
+        }
+        setYDirection(randY * speedScale);
     }
 
     public void setXDirection(int randXDirection) {
-
+        xSpeed = randXDirection;
     }
     
     public void setYDirection(int randYDirection) {
-
+        ySpeed = randYDirection;
     }
 
     public void move() {
-
+        x += xSpeed;
+        y += ySpeed;
     }
 
     public void draw(Graphics g) {
-        
+        g.setColor(Color.white);
+        g.fillOval(x, y, width, height);
     }
 }
