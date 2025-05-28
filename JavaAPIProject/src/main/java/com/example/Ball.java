@@ -10,13 +10,13 @@ public class Ball extends Rectangle{
 
     public Ball(int x, int y, int width, int height) {
         super(x, y, width, height);
-        int randX = (int) (Math.random() * 2) + 1;
+        int randX = (int) (Math.random() * 2);
         if (randX == 0) {
             randX--;
         }
         setXDirection(randX * speedScale);
 
-        int randY = (int) (Math.random() * 2) + 1;
+        int randY = (int) (Math.random() * 2);
         if (randY == 0) {
             randY--;
         }
