@@ -14,11 +14,11 @@ public class Snake extends Game{
 
 
         snakeGui.add(snakePanel);
-        snakeGui.setSize(500, 500);
         snakeGui.setResizable(false);
         snakeGui.setBackground(Color.black);
         snakeGui.setLocationRelativeTo(null);
         snakeGui.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        snakeGui.pack();
 
         snakeGui.setVisible(true);
     }
