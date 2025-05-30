@@ -5,7 +5,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-public class Pong extends Game {
+public class Pong{
     private JFrame game;
     private PongPanel panel;
 

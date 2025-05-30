@@ -5,8 +5,8 @@ import java.util.Random;
 import javax.swing.*;
 
 public class SnakePanel extends JPanel implements ActionListener{
-    private int screenWidth = 500, screenHeight = 500;
-    private int snakeSize = 4, unitSize = 50, delay = 175, applesEaten, appleX, appleY, gameUnits = (screenHeight * screenWidth) / unitSize;
+    private int screenWidth = 1000, screenHeight = 1000;
+    private int snakeSize = 4, unitSize = 50, delay = 100, applesEaten, appleX, appleY, gameUnits = (screenHeight * screenWidth) / unitSize;
     private boolean run = false;
     private String direction = "R";
     Timer timer;
@@ -27,6 +27,7 @@ public class SnakePanel extends JPanel implements ActionListener{
 
     public void start() {
         newApple();
+        applesEaten = 0;
         run = true;
         timer = new Timer(delay, this);
         timer.start();
@@ -45,22 +46,32 @@ public class SnakePanel extends JPanel implements ActionListener{
     }
 
     public void draw(Graphics g) {
-        for (int i = 0; i < screenHeight / unitSize; i++) {
-            g.drawLine(i * unitSize, 0, i*unitSize, screenHeight);
-            g.drawLine(0, i*unitSize, screenWidth, i*unitSize);
-        }
-        g.setColor(Color.red);
-        g.fillOval(appleX, appleY, unitSize, unitSize);
+        if (run) {
+            for (int i = 0; i < screenHeight / unitSize; i++) {
+                g.drawLine(i * unitSize, 0, i*unitSize, screenHeight);
+                g.drawLine(0, i*unitSize, screenWidth, i*unitSize);
+            }
+            g.setColor(Color.red);
+            g.fillOval(appleX, appleY, unitSize, unitSize);
 
-        for (int i = 0; i < snakeSize; i++) {
-            if (i == 0) {
-                g.setColor(Color.green);
-                g.fillRect(x[i], y[i], unitSize, unitSize);
+            for (int i = 0; i < snakeSize; i++) {
+                if (i == 0) {
+                    g.setColor(Color.green);
+                    g.fillRect(x[i], y[i], unitSize, unitSize);
+                }
+                else {
+                    g.setColor(new Color(45, 180, 0));
+                    g.fillRect(x[i], y[i], unitSize, unitSize);
+                }
             }
-            else {
-                g.setColor(new Color(45, 180, 0));
-                g.fillRect(x[i], y[i], unitSize, unitSize);
-            }
+
+            g.setColor(Color.MAGENTA);
+            g.setFont(new Font("Quicksand", Font.BOLD, 75));
+            FontMetrics met = getFontMetrics(g.getFont());
+            g.drawString("Score: " + applesEaten, (screenWidth-met.stringWidth("Score: " + applesEaten)) / 2, g.getFont().getSize());
+        }
+        else {
+            gameOver(g);
         }
     }
 
@@ -88,7 +99,11 @@ public class SnakePanel extends JPanel implements ActionListener{
     }
 
     public void touchApple() {
-        
+        if (x[0] == appleX && y[0] == appleY) {
+            snakeSize++;
+            newApple();
+            applesEaten++;
+        }
     }
 
     public void checkCollision() {
@@ -109,25 +124,23 @@ public class SnakePanel extends JPanel implements ActionListener{
         if (!run) {
             timer.stop();
         }
-
-        if (x[0] == appleX && y[0] == appleY) {
-            snakeSize++;
-            newApple();
-        }
     }
 
-    public void gameOver() {
+    public void gameOver(Graphics g) {
+        g.setColor(Color.MAGENTA);
+        g.setFont(new Font("Quicksand", Font.BOLD, 75));
 
+        FontMetrics met = getFontMetrics(g.getFont());
+        g.drawString("Score: " + applesEaten, (screenWidth-met.stringWidth("Score: " + applesEaten)) / 2, g.getFont().getSize());
+        g.drawString("Game Over", (screenWidth-met.stringWidth("Game Over")) / 2, screenHeight / 2);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (run) {
             move();
-            checkCollision();
-            
             touchApple();
-            
+            checkCollision();
         }
         repaint();
     }
@@ -156,11 +169,30 @@ public class SnakePanel extends JPanel implements ActionListener{
                         direction = "D";
                     }
                     break;
+
+                case KeyEvent.VK_A:
+                    if (!(direction.equals("R"))) {
+                        direction = "L";
+                    }
+                    break;
+                case KeyEvent.VK_D:
+                    if (!(direction.equals("L"))) {
+                        direction = "R";
+                    }
+                    break;
+                case KeyEvent.VK_W:
+                    if (!(direction.equals("D"))) {
+                        direction = "U";
+                    }
+                    break;
+                case KeyEvent.VK_S:
+                    if (!(direction.equals("U"))) {
+                        direction = "D";
+                    }
+                    break;
+
             }
         }
         
-        public void keyReleased(KeyEvent e) {
-
-        }
     }
 }

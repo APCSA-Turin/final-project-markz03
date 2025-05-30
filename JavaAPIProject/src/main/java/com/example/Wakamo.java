@@ -5,7 +5,7 @@ import java.util.Random;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public class Wakamo extends Game{
+public class Wakamo {
     JFrame game;
     JLabel textLabel;
     JLabel timeLabel;
@@ -22,7 +22,6 @@ public class Wakamo extends Game{
     int score = 0;
 
     public Wakamo() {
-        super();
         game = new JFrame();
         textLabel = new JLabel();
         textPanel = new JPanel();

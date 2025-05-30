@@ -12,7 +12,7 @@ public class SelectionGui {
     private JFrame selectionGui;
     private JPanel boardPanel;
     private JButton[] gameIcons;
-    private ImageIcon wakamo, pong, game3;
+    private ImageIcon wakamoIcon, pongIcon, snakeIcon;
 
 
     public SelectionGui() {
@@ -34,11 +34,11 @@ public class SelectionGui {
         selectionGui.getContentPane().setBackground(new Color(53, 18, 105));
 
         Image wakamoImg = new ImageIcon(getClass().getResource("./selectWaka.png")).getImage();
-        wakamo = new ImageIcon(wakamoImg.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH));
+        wakamoIcon = new ImageIcon(wakamoImg.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH));
         Image pongImg = new ImageIcon(getClass().getResource("./pong.png")).getImage();
-        pong = new ImageIcon(pongImg.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH));
-        Image game3IMG = new ImageIcon(getClass().getResource("./mole.png")).getImage();
-        game3 = new ImageIcon(game3IMG.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH));
+        pongIcon = new ImageIcon(pongImg.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH));
+        Image snakeImg = new ImageIcon(getClass().getResource("./snake.png")).getImage();
+        snakeIcon = new ImageIcon(snakeImg.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH));
         
         for (int i = 0; i < 3; i++) {
             JButton icon = new JButton();
@@ -46,30 +46,27 @@ public class SelectionGui {
             icon.setFocusable(false);
             boardPanel.add(icon);
             if (i == 0) {
-                icon.setIcon(wakamo);
+                icon.setIcon(wakamoIcon);
             }
             else if (i == 1) {
-                icon.setIcon(pong);
+                icon.setIcon(pongIcon);
             }
             else if (i == 2) {
-                icon.setIcon(game3);
+                icon.setIcon(snakeIcon);
             }
 
             icon.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     JButton icon = (JButton) e.getSource();
-                    if (icon.getIcon() == wakamo) {
+                    if (icon.getIcon() == wakamoIcon) {
                         Wakamo waka = new Wakamo();
                     }
-                    else if (icon.getIcon() == pong) {
+                    else if (icon.getIcon() == pongIcon) {
                         Pong pongGame = new Pong();
                     }
-                    else if (icon.getIcon() == game3) {
-                        Wakamo waka = new Wakamo();
+                    else if (icon.getIcon() == snakeIcon) {
+                        Snake snake = new Snake();
                     }
-                    // if (icon == ) {
-                        
-                    // }
                     
                 }
             });
