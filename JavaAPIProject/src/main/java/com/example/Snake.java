@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.util.Random;
 import javax.swing.*;
 
-public class Snake extends Game{
+public class Snake{
     private JFrame snakeGui;
     private SnakePanel snakePanel;
 
@@ -16,7 +16,6 @@ public class Snake extends Game{
         snakeGui.add(snakePanel);
         snakeGui.setResizable(false);
         snakeGui.setBackground(Color.black);
-        snakeGui.setLocationRelativeTo(null);
         snakeGui.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         snakeGui.pack();
 

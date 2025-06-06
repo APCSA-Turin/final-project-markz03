@@ -23,6 +23,7 @@ public class SelectionGui {
         selectionGui = new JFrame("Select A Game");
         boardPanel = new JPanel();
         gameIcons = new JButton[3];
+        boardPanel.setBackground(new Color(53, 18, 105));
 
 
         

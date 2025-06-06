@@ -24,6 +24,7 @@ public class Pong{
         game.setLocationRelativeTo(null);
         game.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         game.pack();
+        game.requestFocusInWindow();
 
     
 

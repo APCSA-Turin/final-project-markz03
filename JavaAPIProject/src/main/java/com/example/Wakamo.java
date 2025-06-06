@@ -67,7 +67,6 @@ public class Wakamo {
                 if (remainingSeconds <= 0) {
                     timer.stop();
                     timeLabel.setText("Time's up!");
-                    System.out.println("TIMES OUT");
                     for (int i = 0; i < 9; i++) {
                         board[i].setEnabled(false);
                     }
@@ -93,15 +92,14 @@ public class Wakamo {
                     if (hole == currMoleTile) {
                         score+=5;
                         textLabel.setText("Score: " + Integer.toString(score));
+                        currMoleTile.setIcon(holeIcon);
+                        currMoleTile = null;
                     }
                     
                 }
             });
 
         }
-
-
-
 
         setMoleTimer = new Timer(750, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -123,11 +121,6 @@ public class Wakamo {
 
 
         game.setVisible(true);
-
-    }
-
-    public static void main(String[] args) {
-        Wakamo wack = new Wakamo();
 
     }
 }

@@ -21,14 +21,13 @@ public class PongPanel extends JPanel implements Runnable{
         this.addKeyListener(new AL());
         this.setPreferredSize(new Dimension(1000, 555));
 
-
         gameThread = new Thread(this);
         gameThread.start();
 
     }
 
     public void newBall() {
-        ball = new Ball(240, 267, 30, 30);
+        ball = new Ball(500, 267, 30, 30);
     }
 
     public void newPaddles() {
@@ -88,9 +87,11 @@ public class PongPanel extends JPanel implements Runnable{
 
             if (ball.intersects(paddle1)) {
                 score.increaseScore(paddle1);
+                ball.x = paddle1.x + paddle1.width + 1;
             }
             else if (ball.intersects(paddle2)) {
                 score.increaseScore(paddle2);
+                ball.x = paddle2.x - ball.width - 1;;
             }
             
         }
